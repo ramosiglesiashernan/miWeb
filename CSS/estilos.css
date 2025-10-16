@@ -1,0 +1,57 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f4f4f4;
+  color: #333;
+  text-align: center;
+  transition: background 0.5s, color 0.5s;
+}
+
+header {
+  background: #1976d2;
+  color: white;
+  padding: 1rem;
+}
+
+.presentacion {
+  margin-top: 3rem;
+}
+
+.lampara-container {
+  position: fixed;
+  top: 20px;         /* distancia desde la parte superior */
+  right: 30px;       /* distancia desde el borde derecho */
+  z-index: 9999;     /* que quede por encima del contenido */
+  width: 70px;       /* tamaño reducido */
+  height: 120px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.lampara-container:hover {
+  transform: scale(1.05);
+}
+
+#lampara {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  transition: transform 0.2s ease-in-out;
+}
+
+#lampara:active {
+  transform: translateY(3px); /* efecto de clic */
+}
+
+#cuerda {
+  animation: balanceo 3s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes balanceo {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(2deg); }
+}
+
+#bombilla {
+  transition: fill 0.4s, filter 0.4s;
+}
