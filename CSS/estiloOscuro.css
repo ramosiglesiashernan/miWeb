@@ -1,140 +1,514 @@
+/* estiloOscuro.css */
+
 /* Tema oscuro moderno con tonos morados cálidos */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color-dark: rgba(25, 0, 60, 0.85);
+    --secondary-color-dark: #b880ff;
+    --text-color-dark: #ffffff;
+    --background-dark: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --section-background-dark: rgba(40, 35, 70, 0.6);
+    --form-background-dark: rgba(50, 20, 80, 0.5);
+    --border-color-dark: rgba(255,255,255,0.1);
+    --shadow-dark: rgba(0,0,0,0.5);
+}
+
 body {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); /* gradiente morado oscuro */
-  color: #ffffff;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  transition: background 0.5s, color 0.5s;
+    font-family: "Poppins", sans-serif;
+    background: var(--background-dark);
+    color: var(--text-color-dark);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    transition: background 0.5s, color 0.5s;
 }
 
 header {
-  background: rgba(25, 0, 60, 0.85); /* morado oscuro semitransparente */
-  color: #f0e6ff;
-  padding: 1.5rem 2rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    background: var(--primary-color-dark); /* Vuelve al color sólido oscuro */
+    color: #f0e6ff;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 10px var(--shadow-dark);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* Quitamos estilos de video del header */
+    display: block;
 }
 
 header h1 {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 1px;
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
 }
 
 /* Navegación */
+nav {
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
 nav a {
-  color: #e0d4ff;
-  text-decoration: none;
-  margin: 0 1rem;
-  font-weight: 500;
-  transition: color 0.3s, transform 0.3s;
+    color: #e0d4ff;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: color 0.3s, transform 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 nav a:hover {
-  color: #f9b8ff;
-  transform: scale(1.05);
+    color: #f9b8ff;
+    transform: scale(1.05);
+    background-color: rgba(255,255,255,0.1);
 }
 
-/* Secciones */
-section {
-  padding: 4rem 1rem;
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: left;
+nav img {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    filter: invert(1); /* Invertir colores de los iconos en modo oscuro */
 }
 
-section h2 {
-  font-size: 1.8rem;
-  color: #d1b3ff;
-  margin-bottom: 1rem;
+/* --- Layout Principal con CSS Grid (adaptación para modo oscuro) --- */
+.main-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-areas:
+        "hero hero"
+        "video-square sidebar"
+        "content1 sidebar"
+        "content2 sidebar"
+        "full-width full-width";
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-section p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #e8e1ff;
+/* Sección Hero (sin video) en modo oscuro */
+#hero {
+    grid-area: hero;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--section-background-dark); /* Fondo oscuro suave */
+    color: var(--text-color-dark);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #d1b3ff;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    color: #e8e1ff;
+}
+
+.hero-button {
+    display: inline-block;
+    background: #8e2de2;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.hero-button:hover {
+    background: #af7ee2;
+    transform: translateY(-3px);
+}
+
+/* Estilos para el cuadrado de vídeo de naturaleza en modo oscuro */
+.nature-video-square {
+    grid-area: video-square;
+    min-height: 300px;
+    background-color: #000; /* Fondo más oscuro */
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.nature-video-square video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
+    filter: brightness(0.5); /* Oscurece más el vídeo */
+}
+
+.video-overlay-small {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Overlay más oscuro */
+    z-index: 2;
+}
+
+.video-text-content {
+    position: relative;
+    z-index: 3;
+    padding: 1rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+}
+
+.video-text-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #d1b3ff;
+}
+
+.video-text-content p {
+    font-size: 1rem;
+    color: #e0d4ff;
+}
+
+
+#sobre-mi {
+    grid-area: content1;
+}
+
+#galeria {
+    grid-area: content2;
+}
+
+.sidebar-grid-item {
+    grid-area: sidebar;
+    background: var(--section-background-dark);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    text-align: left;
+}
+
+.sidebar-grid-item h3 {
+    font-size: 1.5rem;
+    color: #d1b3ff;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.5rem;
+}
+
+.sidebar-grid-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-grid-item li {
+    margin-bottom: 10px;
+}
+
+.sidebar-grid-item a {
+    text-decoration: none;
+    color: #e0d4ff;
+    transition: color 0.3s;
+}
+
+.sidebar-grid-item a:hover {
+    color: #f9b8ff;
+    text-decoration: underline;
+}
+
+#contacto {
+    grid-area: full-width;
+    background: var(--form-background-dark);
+}
+
+/* Estilos generales para las secciones que son 'grid-item' */
+section.grid-item:not(#hero) {
+    padding: 4rem 1rem;
+    text-align: left;
+    background: var(--section-background-dark);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-dark);
+}
+
+section.grid-item h2 {
+    font-size: 1.8rem;
+    color: #d1b3ff;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.5rem;
+}
+
+section.grid-item p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e8e1ff;
+}
+
+/* Estilos para el placeholder de galería */
+.gallery-placeholder {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px dashed rgba(255,255,255,0.2);
+    text-align: center;
+}
+
+.gallery-placeholder p {
+    grid-column: 1 / -1;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.small-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
 }
 
 /* Formularios */
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  background: rgba(50, 20, 80, 0.5);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--section-background-dark);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+form label {
+    font-weight: 600;
+    color: #f0e6ff;
+    margin-bottom: 0.2rem;
+    display: block;
 }
 
 input, textarea {
-  padding: 0.8rem;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  background: rgba(255,255,255,0.1);
-  color: #fff;
+    padding: 0.9rem;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 1rem;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #ccc;
+    color: #ccc;
+}
+
+input:focus,
+textarea:focus {
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 0 3px rgba(210, 180, 255, 0.3);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
 }
 
 button {
-  background: #b880ff;
-  color: #fff;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+    background: var(--secondary-color-dark);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    align-self: flex-start;
 }
 
 button:hover {
-  background: #d6a0ff;
-  transform: scale(1.05);
+    background: #d6a0ff;
+    transform: scale(1.05);
 }
 
 /* Bombilla */
 .lampara-container {
-  position: fixed;
-  top: 20px;
-  right: 30px;
-  width: 70px;
-  height: 120px;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-  z-index: 9999;
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 9999;
+    width: 70px;
+    height: 120px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
 .lampara-container:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 #bombilla {
-  fill: #f9d56e;
-  filter: drop-shadow(0 0 20px #f9d56e);
-  transition: fill 0.4s, filter 0.4s;
+    fill: #f9d56e;
+    filter: drop-shadow(0 0 20px #f9d56e);
+    transition: fill 0.4s, filter 0.4s;
 }
 
 #cuerda {
-  animation: balanceo 3s ease-in-out infinite;
-  transform-origin: top;
+    animation: balanceo 3s ease-in-out infinite;
+    transform-origin: top;
+    stroke: #aaa;
+    stroke-width: 3px;
 }
 
 @keyframes balanceo {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(2deg); }
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(2deg); }
 }
 
 /* Footer */
 footer {
-  padding: 2rem 0;
-  background: rgba(25, 0, 60, 0.85);
-  color: #d1b3ff;
-  font-size: 0.9rem;
+    padding: 2rem 0;
+    background: var(--primary-color-dark);
+    color: #d1b3ff;
+    font-size: 0.9rem;
+    margin-top: 3rem;
+    box-shadow: 0 -2px 8px var(--shadow-dark);
+}
+
+/* Estilos para el botón de admin y mensajes en modo oscuro */
+#ver-mensajes-admin {
+    background: #6a05ad;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: background 0.3s, transform 0.2s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#ver-mensajes-admin:hover {
+    background: #8e2de2;
+    transform: translateY(-2px);
+}
+
+#mensajes-recibidos {
+    background: var(--form-background-dark);
+    border: 1px solid var(--border-color-dark);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 800px;
+    text-align: left;
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    color: #e8e1ff;
+}
+
+#mensajes-recibidos em {
+    color: #bbb;
+    font-style: normal;
+}
+
+#mensajes-recibidos div {
+    border-bottom: 1px dashed rgba(255,255,255,0.15);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#mensajes-recibidos div:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .main-grid-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "hero"
+            "video-square"
+            "content1"
+            "content2"
+            "sidebar"
+            "full-width";
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    #hero {
+        min-height: 40vh;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav {
+        gap: 1rem;
+    }
+
+    nav img {
+        width: 25px;
+        height: 25px;
+    }
+
+    section.grid-item {
+        padding: 2.5rem 1rem;
+    }
+
+    form {
+        padding: 1.5rem;
+    }
+
+    .nature-video-square {
+        min-height: 250px;
+    }
 }
