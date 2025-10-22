@@ -1,10 +1,11 @@
-// main.js
+// main.js (Versión Actualizada)
 
+// --- Lógica del Formulario de Contacto (sin cambios) ---
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('#contacto form');
   
     form.addEventListener('submit', function(e) {
-      e.preventDefault(); // Evita el envío normal
+      e.preventDefault();
       const nombre = document.getElementById('nombre').value;
       const mensaje = document.getElementById('mensaje').value;
   
@@ -13,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
 
-      // Guardar en LocalStorage
       let mensajesGuardados = JSON.parse(localStorage.getItem('mensajesContacto')) || [];
       mensajesGuardados.push({
         nombre: nombre,
@@ -25,15 +25,17 @@ document.addEventListener('DOMContentLoaded', function() {
       alert('¡Mensaje enviado! Gracias por contactarte.');
       form.reset();
   
-      mostrarMensajesRecibidos();
+      // Si el panel de mensajes está visible, lo actualizamos
+      const contenedor = document.getElementById('mensajes-recibidos');
+      if (contenedor.style.display === 'block') {
+          mostrarMensajesRecibidos();
+      }
     });
   
-    // Botón para ver mensajes guardados
     const botonVer = document.getElementById('ver-mensajes-admin');
     const contenedor = document.getElementById('mensajes-recibidos');
   
     botonVer.addEventListener('click', function() {
-      // Alternar el texto del botón
       if (contenedor.style.display === 'none' || contenedor.style.display === '') {
         mostrarMensajesRecibidos();
         contenedor.style.display = 'block';
@@ -50,36 +52,23 @@ document.addEventListener('DOMContentLoaded', function() {
         contenedor.innerHTML = '<em>No hay mensajes guardados.</em>';
       } else {
         contenedor.innerHTML = mensajes.map(m =>
-          `<div style="margin-bottom:10px;">
-            <b>${m.nombre}</b> <span style="color:#777;">[${m.fecha}]</span><br>${m.mensaje}
-          </div>`
+          `<div><b>${m.nombre}</b> <span style="color:#777;">[${m.fecha}]</span><br>${m.mensaje}</div>`
         ).join('');
       }
     }
-
-    // Inicializar el estado del botón y del contenedor al cargar
-    if (contenedor.style.display === 'none' || contenedor.style.display === '') {
-      botonVer.textContent = 'Ver Mensajes Recibidos (Admin)';
-    } else {
-      botonVer.textContent = 'Ocultar Mensajes Recibidos (Admin)';
-      mostrarMensajesRecibidos(); // Mostrar mensajes si el contenedor ya está visible (aunque lo ocultamos por defecto en el HTML)
-    }
 });
 
-// Cambio de tema oscuro/claro
+// --- Lógica del Cambio de Tema (MODIFICADA) ---
 document.addEventListener("DOMContentLoaded", () => {
     const bombilla = document.getElementById("bombilla");
     const cuerda = document.getElementById("cuerda");
-    const themeLink = document.getElementById("theme-link");
   
-    // Obtener el estado del modo oscuro de localStorage si existe
+    // Comprobar el estado guardado en localStorage
     let modoOscuro = localStorage.getItem('modoOscuro') === 'true';
 
-    // Aplicar el tema al cargar la página
+    // Aplicar la clase correcta al body al cargar la página
     if (modoOscuro) {
-        themeLink.setAttribute("href", "css/estiloOscuro.css");
-    } else {
-        themeLink.setAttribute("href", "css/estilos.css");
+        document.body.classList.add('dark-mode');
     }
   
     bombilla.addEventListener("click", () => {
@@ -87,14 +76,11 @@ document.addEventListener("DOMContentLoaded", () => {
       cuerda.setAttribute("y2", "100");
       setTimeout(() => cuerda.setAttribute("y2", "80"), 200);
   
-      // Cambiar tema
-      modoOscuro = !modoOscuro;
-      if (modoOscuro) {
-        themeLink.setAttribute("href", "css/estiloOscuro.css");
-      } else {
-        themeLink.setAttribute("href", "css/estilos.css");
-      }
-      // Guardar el estado del modo oscuro en localStorage
+      // Alternar la clase en el body
+      document.body.classList.toggle('dark-mode');
+
+      // Actualizar el estado y guardarlo en localStorage
+      modoOscuro = document.body.classList.contains('dark-mode');
       localStorage.setItem('modoOscuro', modoOscuro);
     });
 });
