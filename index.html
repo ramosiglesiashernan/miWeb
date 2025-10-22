@@ -5,97 +5,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hernán Iglesias Ramos</title>
   <link rel="icon" href="./img/logo.png" type="image/x-icon">
-  <!-- Enlaza Google Fonts para "Poppins" -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/estilos.css" id="theme-link">
 </head>
 <body>
-  <header>
-    <h1>Hernán Iglesias Ramos</h1>
-    <nav>
-      <a href="#hero" title="Inicio"><img src="./img/home.png" alt="Ir a Inicio" width="30"></a>
-      <a href="#sobre-mi" title="Sobre Mí"><img src="./img/info.png" alt="Ir a Sobre Mí" width="30"></a>
-      <a href="#galeria" title="Galería"><img src="./img/gallery.png" alt="Ir a Galería" width="30"></a>
-      <a href="#contacto" title="Contacto"><img src="./img/contacto.png" alt="Ir a Contacto" width="30"></a>
-    </nav>
-  </header>
 
-  <main class="main-grid-container">
-    <section id="hero" class="hero-section grid-item full-width-grid-item">
-      <div class="hero-content">
-        <h2>Bienvenido a miWeb</h2>
-        <p>Un espacio dedicado al tambor tradicional asturiano.</p>
-        <a href="#sobre-mi" class="hero-button">Conoce más</a>
-      </div>
-    </section>
-
-    <!-- Nuevo elemento: el cuadrado con vídeo de fondo de naturaleza -->
-    <div class="nature-video-square grid-item">
-      <video autoplay loop muted playsinline>
-        <source src="videos/nature-video.mp4" type="video/mp4">
-        <source src="videos/nature-video.webm" type="video/webm">
-        Tu navegador no soporta el vídeo de naturaleza.
-      </video>
-      <div class="video-overlay-small"></div>
-      <div class="video-text-content">
-        <h3>Explora la naturaleza</h3>
-        <p>Un momento de calma en tu día.</p>
-      </div>
-    </div>
-
-    <section id="sobre-mi" class="grid-item">
-      <h2>Sobre Mí</h2>
-      <p>Me llamo Hernán Iglesias Ramos y soy un apasionado del tambor tradicional asturiano. En esta web compartiré información, recursos y mi experiencia con este fascinante instrumento.</p>
-    </section>
-
-    <section id="galeria" class="grid-item">
-      <h2>Galería de Contenido</h2>
-      <div class="gallery-placeholder">
-        <p>Aquí se mostrarían imágenes o pequeños clips de vídeo relacionados con el tambor.</p>
-        <div class="small-box">Contenido 1</div>
-        <div class="small-box">Contenido 2</div>
-        <div class="small-box">Contenido 3</div>
-      </div>
-    </section>
-
-    <section id="contacto" class="grid-item full-width-grid-item">
-      <h2>Contacto</h2>
-      <form name="contactForm">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required><br>
-        <label for="mensaje">Mensaje:</label>
-        <textarea id="mensaje" name="mensaje" rows="6" placeholder="Escribe tu mensaje aquí..." required></textarea><br>
-        <button type="submit">Enviar Mensaje</button>
-      </form>
-    </section>
-
-    <aside class="sidebar-grid-item">
-      <h3>Novedades y Enlaces</h3>
-      <ul>
-        <li><a href="#">Artículo reciente 1</a></li>
-        <li><a href="#">Evento próximo</a></li>
-        <li><a href="#">Descargas de partituras</a></li>
-        <li><a href="#">Colaboraciones</a></li>
-        <li><a href="#">Más sobre el tambor</a></li>
-      </ul>
-    </aside>
-
-  </main>
-
-  <footer>
-    &copy; 2025 Hernán Iglesias Ramos. Todos los derechos reservados.
-  </footer>
-
+  <!-- Contenedor de la Lámpara/Bombilla -->
   <div class="lampara-container">
     <svg id="lampara" viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg">
-      <line id="cuerda" x1="60" y1="0" x2="60" y2="80" stroke="#aaa" stroke-width="3" />
-      <circle id="bombilla" cx="60" cy="120" r="30" fill="#f7e86b" stroke="#555" stroke-width="3"/>
+      <line id="cuerda" x1="60" y1="0" x2="60" y2="80" />
+      <circle id="bombilla" cx="60" cy="120" r="30" />
       <path d="M45 90 Q60 70 75 90 Z" fill="#888"/> <!-- Casquillo -->
     </svg>
   </div>
 
-  <button id="ver-mensajes-admin">Ver Mensajes Recibidos (Admin)</button>
-  <div id="mensajes-recibidos" style="display: none;"></div>
+  <header class="main-header">
+    <div class="header-content">
+      <a href="#" class="logo-link">
+        <h1>Hernán Iglesias Ramos</h1>
+      </a>
+      <nav>
+        <a href="#sobre-mi">Sobre Mí</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero">
+      <div class="hero-content">
+        <h2 class="hero-title">Bienvenido a mi Web</h2>
+        <p class="hero-subtitle">Un espacio dedicado al tambor tradicional asturiano.</p>
+        <a href="#sobre-mi" class="hero-button">Conoce más</a>
+      </div>
+    </section>
+
+    <section id="sobre-mi" class="content-section">
+      <div class="section-wrapper">
+        <h2>Sobre Mí</h2>
+        <p>Me llamo Hernán Iglesias Ramos y soy un apasionado del tambor tradicional asturiano. En esta web compartiré información, recursos y mi experiencia con este fascinante instrumento.</p>
+      </div>
+    </section>
+
+    <section id="galeria" class="content-section">
+      <div class="section-wrapper">
+        <h2>Galería de Contenido</h2>
+        <div class="gallery-placeholder">
+          <p>Aquí se mostrarían imágenes o pequeños clips de vídeo relacionados con el tambor.</p>
+          <div class="small-box">Contenido 1</div>
+          <div class="small-box">Contenido 2</div>
+          <div class="small-box">Contenido 3</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="content-section">
+      <div class="section-wrapper">
+        <h2>Contacto</h2>
+        <form name="contactForm">
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="6" placeholder="Escribe tu mensaje aquí..." required></textarea>
+          </div>
+          <button type="submit">Enviar Mensaje</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Sección de Administración movida fuera del flujo principal para mayor claridad -->
+    <section id="admin-section" class="content-section">
+        <div class="section-wrapper">
+            <button id="ver-mensajes-admin">Ver Mensajes Recibidos (Admin)</button>
+            <div id="mensajes-recibidos" style="display: none;"></div>
+        </div>
+    </section>
+
+  </main>
+
+  <footer class="main-footer">
+    <p>&copy; 2025 Hernán Iglesias Ramos. Todos los derechos reservados.</p>
+  </footer>
 
   <script src="./js/main.js"></script>
 </body>
