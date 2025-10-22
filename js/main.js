@@ -84,3 +84,27 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem('modoOscuro', modoOscuro);
     });
 });
+
+
+// --- Lógica del Botón Volver Arriba ---
+document.addEventListener("DOMContentLoaded", () => {
+    const backToTopBtn = document.getElementById('back-to-top-btn');
+
+    // Muestra u oculta el botón basado en la posición del scroll
+    window.addEventListener('scroll', () => {
+        // Muestra el botón si el usuario ha bajado más de 300px
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+
+    // Hace scroll suave hacia arriba cuando se hace clic
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // ¡La magia del scroll suave!
+        });
+    });
+});
